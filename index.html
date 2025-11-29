@@ -393,6 +393,44 @@
         font-size: 0.95rem;
       }
       /* CSS:RWD-END */
+
+      /* ====== Prevent Horizontal Scroll on All Devices ====== */
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      /* Container 保證不會超出版面 */
+      .container {
+        overflow-x: hidden;
+      }
+
+      /* ====== 修正 768px 可能造成 overflow 的 grid 設定 ====== */
+      @media (min-width: 768px) {
+        .hero-grid {
+          /* 用 minmax 讓右圖在窄螢幕不會硬塞 420px */
+          grid-template-columns: 1fr minmax(260px, 420px);
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr minmax(240px, 360px);
+        }
+      }
+
+      /* ====== 修正圖片超出邊界的情況 ====== */
+      .hero-figure,
+      .about-avatar,
+      .project-thumb img {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      /* ====== 防止 box-shadow 推出容器 ====== */
+      .project-card,
+      .hero-figure {
+        overflow: hidden;
+      }
     </style>
   </head>
 
